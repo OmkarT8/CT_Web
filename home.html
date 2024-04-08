@@ -501,7 +501,7 @@
 
 
     var map;
-    document.addEventListener("CT_web_native_display", function (event) {
+    document.addEventListener("CT_web_native_display", function(event) {
         const data = event.detail;
         const topic = data.kv.topic;
         switch (topic) {
@@ -512,7 +512,7 @@
                 const nikelong1 = data.kv.mumlong1;
                 const nikelat2 = data.kv.mumlat2;
                 const nikelong2 = data.kv.mumlong2;
-                console.log(event);
+                console.log(event)
                 GetMap(Maplat, Maplong, nikelat1, nikelong1, nikelat2, nikelong2);
                 break;
             }
@@ -523,7 +523,7 @@
                 const nikelong1 = data.kv.chenlong1;
                 const nikelat2 = data.kv.chenlat2;
                 const nikelong2 = data.kv.chenlong2;
-                console.log(event);
+                console.log(event)
                 GetMap(Maplat, Maplong, nikelat1, nikelong1, nikelat2, nikelong2);
                 break;
             }
@@ -534,33 +534,35 @@
                 const nikelong1 = data.kv.delhilong1;
                 const nikelat2 = data.kv.delhilat2;
                 const nikelong2 = data.kv.delhilong2;
-                console.log(event);
+                console.log(event)
                 GetMap(Maplat, Maplong, nikelat1, nikelong1, nikelat2, nikelong2);
                 break;
             }
         }
     });
 
-    function GetMap(Maplat, Maplong, nikelat1, nikelong1, nikelat2, nikelong2) {
+    function GetMap(Maplat, Maplong, nikelat1, nikelong1, nikelat2, nikelong2){
         map = new Microsoft.Maps.Map('#map', {
-            credentials: 'AgqhHTpqAb3THNjlAg9U5wgXs4_J3ohcC4zr52IMSRdL_zZ9G5WLaNo9N1_IKXmv',
-            center: new Microsoft.Maps.Location(Maplat, Maplong), // Chennai coordinates
-            zoom: 10
-        });
-        var nikeStores = [
-            { name: 'Nike Store 1', location: new Microsoft.Maps.Location(nikelat1, nikelong1) }, // Example coordinates
-            { name: 'Nike Store 2', location: new Microsoft.Maps.Location(nikelat2, nikelong2) } // Example coordinates
-            // Add more Nike store locations here
-        ];
-        for (var i = 0; i < nikeStores.length; i++) {
-            var pin = new Microsoft.Maps.Pushpin(nikeStores[i].location, {
-                title: nikeStores[i].name,
-                color: 'red'
+                credentials: 'AgqhHTpqAb3THNjlAg9U5wgXs4_J3ohcC4zr52IMSRdL_zZ9G5WLaNo9N1_IKXmv',
+                center: new Microsoft.Maps.Location(Maplat, Maplong), // Chennai coordinates
+                zoom: 10
             });
-            map.entities.push(pin);
-        }
+            var nikeStores = [
+                { name: 'Nike Store 1', location: new Microsoft.Maps.Location(nikelat1, nikelong1) }, // Example coordinates
+                { name: 'Nike Store 2', location: new Microsoft.Maps.Location(nikelat2, nikelong2) }, // Example coordinates
+                // Add more Nike store locations here
+            ];
+            for (var i = 0; i < nikeStores.length; i++) {
+                var pin = new Microsoft.Maps.Pushpin(nikeStores[i].location, {
+                    title: nikeStores[i].name,
+                    color: 'red'
+                });
+                map.entities.push(pin);
+            }
     }
     window.onload = GetMap;
+
+
 
     function enablePop() {
         clevertap.event.push("O PopUp");
