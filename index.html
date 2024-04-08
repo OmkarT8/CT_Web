@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <style>
+        input.chkb {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        img.logo {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+    <script type="text/javascript">
+        var clevertap = {
+            event: [],
+            profile: [],
+            account: [],
+            onUserLogin: [],
+            notifications: [],
+            privacy: [],
+        };
+        // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+        clevertap.account.push({ id: "TEST-K9K-Z94-R46Z" });
+        clevertap.privacy.push({ optOut: false }); //set the flag to true, if the user of the device opts out of sharing their data
+        clevertap.privacy.push({ useIP: true }); //set the flag to true, if the user agrees to share their IP data
+        //clevertap.dismissSpamControl = true;
+        (function () {
+            var wzrk = document.createElement("script");
+            wzrk.type = "text/javascript";
+            wzrk.async = true;
+            //wzrk.src = "clevertap.min.js";
+            wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/clevertap.min.js';
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(wzrk, s);
+        })();
+    </script>
+
+    <!--Push Notification-->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyA0lssNNmg2FUERyplrYN8eN4Sl9VZbqbg",
+            authDomain: "clevertap-web-4d5c5.firebaseapp.com",
+            projectId: "clevertap-web-4d5c5",
+            storageBucket: "clevertap-web-4d5c5.appspot.com",
+            messagingSenderId: "356579322319",
+            appId: "1:356579322319:web:967e6a445db1c6fd774aba",
+            measurementId: "G-GXMZMX5NJW"
+        };
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+</head>
+
+<body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light border border-white">
+        <a class="navbar-brand font-weight-bold" href="https://clevertap.com/">
+            <img class="border-light" src="CTLogo.png" height="70">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="home.html" style="font-weight:600;">Home<span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" style="font-weight:600;" href="https://clevertap.com/contact-us/">Contact<span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" style="font-weight:600;" href="https://clevertap.com/live-product-demo/">Talk to
+                        us<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+        <!-- <button class="btn btn-success rounded-pill d-flex" onclick="enableNotification()">Notification</button> -->
+    </nav>
+    <div class="container-fluid">
+        <div class="jumbotron" style="background-color:#F9EAF5">
+            <div class="row">
+                <div class=" col-md-4 h4">CleverTap Web Demo
+                    <hr class="border border-dark">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 font-weight-normal">
+                    CleverTap is an All-In-One customer engagement platform that unifies interactions
+                    between people, processes and technology. CleverTap is built to convert customers into customers
+                    for life with in-moment experiences designed and optimized for scale, in real-time.
+                    We enable brands to create truly cross-channel experience, transcending boundaries between channels,
+                    journeys and outcomes. We’re on a mission to be the ultimate growth partner, providing businesses
+                    with
+                    the insights they need to truly understand their customers and deliver.
+                </div>
+                <div class="col-md-4">
+                    <img src="CT Image.png" height="150">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="container-fluid">
+        <div class="jumbotron py-4">
+            <!-- <h4 class="text-center">Login or Register here</h4><br> -->
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="container">
+                        <div class="card border border-0 px-2 shadow">
+                            <div class="card-body">
+                                <h4 class="text-center">Login here</h4><br>
+                                <div class="row">
+                                    <div class="col-md-3"><label>Email: </label></div>
+                                    <div class="col-md-8"><input class="form-control border-dark" type="text"
+                                            placeholder="Enter Email" id="Loginemail" /></div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-3"><label>Password: </label></div>
+                                    <div class="col-md-8"><input class="form-control border-dark" type="password"
+                                            placeholder="Enter Password" id="pass" /><br>
+                                        <div class="container text-right">
+                                            <button class="btn btn-info align-right" onclick="login()"
+                                                style="width:100px;">Login</button>
+                                        </div><br>
+                                    </div>
+                                </div>
+                                <br>
+                                <label class="text-right">Don't have an account? Register first !</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card border border-0 px-2 shadow">
+                            <div class="card-body">
+                                <h5> Choose your interests (Only 1 Allowed) </h5>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h6 for="Nike"><input type="checkbox" id="Nike" value="Nike" class="chkb"
+                                                onclick="chkcontrol()" name="ckb">
+                                            <img for="Nike" src="/Imgs/nike.png" height="28" width="27" class="logo" />
+                                        </h6><br>
+                                        <h6 for="Adidas"><input type="checkbox" id="Adidas" value="Adidas" class="chkb"
+                                                onclick="chkcontrol()" name="ckb">
+                                            <img for="adidas" src="/Imgs/adidas.png" height="30" width="30"
+                                                class="logo" />
+                                        </h6><br>
+                                        <h6 for="Reebok"><input type="checkbox" id="Reebok" value="Reebok" class="chkb"
+                                                onclick="chkcontrol()" name="ckb">
+                                            <img for="Reebok" src="/Imgs/reebok.png" height="20" width="25"
+                                                class="logo" />
+                                        </h6><br>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 for="Puma"><input type="checkbox" id="Puma" value="Puma" class="chkb"
+                                                onclick="chkcontrol()" name="ckb">
+                                            <img for="Puma" src="/Imgs/puma.png" height="30" width="50" class="logo" />
+                                        </h6><br>
+                                        <h6 for="New_Balance"><input type="checkbox" id="New_Balance"
+                                                value="New Balance" class="chkb" onclick="chkcontrol()" name="ckb">
+                                            <img for="New_Balance" src="/Imgs/NB.png" height="25" width="25"
+                                                class="logo" />
+                                        </h6><br>
+                                        <h6 for="Umbro"><input type="checkbox" id="Umbro" value="Umbro" class="chkb"
+                                                onclick="chkcontrol()" name="ckb">
+                                            <img for="Umbro" src="/Imgs/umbro.png" height="37" width="27"
+                                                class="logo" />
+                                        </h6><br>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 for="UnderArmour"><input type="checkbox" id="UnderArmour"
+                                                value="Under Armour" class="chkb" onclick="chkcontrol()" name="ckb">
+                                            <img for="UnderArmour" src="/Imgs/under armour.png" height="30" width="30"
+                                                class="logo" />
+                                        </h6><br>
+                                        <h6 for="Fila"><input type="checkbox" id="Fila" value="Fila" class="chkb"
+                                                onclick="chkcontrol()" name="ckb">
+                                            <img for="UnderArmour" src="/Imgs/Fila.png" height="30" width="30"
+                                                class="logo" />
+                                        </h6><br>
+                                        <h6 for="converse"><input type="checkbox" id="converse" value="Converse"
+                                                class="chkb" onclick="chkcontrol()" name="ckb">
+                                            <img for="converse" src="/Imgs/converse.png" height="20" width="20"
+                                                class="logo" />
+                                        </h6><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><br>
+                <div class="col-md-6">
+                    <div class="card border border-0 px-2 shadow">
+                        <div class="card-body">
+                            <h4 class="text-center">Register here</h4><br>
+                            <div class="row">
+                                <div class="col-md-2"><label>Name: </label></div>
+                                <div class="col-md-8"><input class="form-control border-dark" type="text"
+                                        placeholder="Enter name" id="uname" /></div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-2"><label>Contact: </label></div>
+                                <div class="col-md-8"><input class="form-control border-dark" type="text"
+                                        placeholder="Enter Contact" id="contact" /></div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-2"><label>Email: </label></div>
+                                <div class="col-md-8"><input class="form-control border-dark" type="text"
+                                        placeholder="Enter Email" id="email" /></div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-2"><label>DOB: </label></div>
+                                <div class="col-md-8"><input class="form-control border-dark" type="text"
+                                        placeholder="MM/DD/YYYY" id="dob" /></div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-2"><label>Identity: </label></div>
+                                <div class="col-md-8"><input class="form-control border-dark" type="text"
+                                        placeholder="Set Identity" id="ct_id" /></div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-2"><label>Gender: </label></div>
+                                <div class="col-md-8"><input class="form-control border-dark" type="text"
+                                        placeholder="Set Gender" id="gender" /><br>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card border border-0 px-2 shadow">
+                        <div class="card-body">
+                            <h5> Select Location: </h5>
+                            <br>
+                            <select id="locationSelect" class="btn btn-info">
+                                <option value="">Select Location</option>
+                                <option value="Mumbai" id="hot">Mumbai</option>
+                                <option value="Chennai" id="hot">Chennai</option>
+                                <option value="Delhi" id="hot">Delhi</option>
+                            </select><br>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <div class="container-fluid text-right">
+                <button id="Continue" class="btn btn-danger align-right" style="width:100px;"
+                    onclick="register()">Register & Proceed</button>
+            </div>
+
+            <!-- <div class="row">
+                <div class="col-md-4">
+                    <div class="container">
+                        <div class="card border border-0 px-2 shadow">
+                            <div class="card-body">
+                                <h5> Select Location: </h5>
+                                <br>
+                                <select id="locationSelect" class="btn btn-block btn-info">
+                                    <option value="">Select Location</option>
+                                    <option value="Mumbai" id="hot">Mumbai</option>
+                                    <option value="Chennai" id="hot">Chennai</option>
+                                    <option value="Delhi" id="hot">Delhi</option>
+                                </select><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card border border-0 px-2 shadow">
+                        <div class="card-body">
+                            <h5> Choose your interests (Only 1 Allowed) </h5>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h6 for="Nike"><input type="checkbox" id="Nike" value="Nike" class="chkb"
+                                            onclick="chkcontrol()" name="ckb">
+                                        <img for="Nike" src="nike.png" height="30" width="30" class="logo" />
+                                    </h6><br>
+                                    <h6 for="Adidas"><input type="checkbox" id="Adidas" value="Adidas" class="chkb"
+                                            onclick="chkcontrol()" name="ckb">
+                                        <img for="adidas" src="adidas.png" height="30" width="30" class="logo" />
+                                    </h6><br>
+                                    <h6 for="Reebok"><input type="checkbox" id="Reebok" value="Reebok" class="chkb"
+                                            onclick="chkcontrol()" name="ckb">
+                                        <img for="Reebok" src="reebok.png" height="20" width="30" class="logo" />
+                                    </h6><br>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6 for="Puma"><input type="checkbox" id="Puma" value="Puma" class="chkb"
+                                            onclick="chkcontrol()" name="ckb">
+                                        <img for="Puma" src="puma.png" height="30" width="50" class="logo" />
+                                    </h6><br>
+                                    <h6 for="New_Balance"><input type="checkbox" id="New_Balance" value="New Balance"
+                                            class="chkb" onclick="chkcontrol()" name="ckb">
+                                        <img for="New_Balance" src="NB.png" height="30" width="30" class="logo" />
+                                    </h6><br>
+                                    <h6 for="Umbro"><input type="checkbox" id="Umbro" value="Umbro" class="chkb"
+                                            onclick="chkcontrol()" name="ckb">
+                                        <img for="Umbro" src="umbro.png" height="40" width="30" class="logo" />
+                                    </h6><br>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6 for="UnderArmour"><input type="checkbox" id="UnderArmour" value="Under Armour"
+                                            class="chkb" onclick="chkcontrol()" name="ckb">
+                                        <img for="UnderArmour" src="under armour.png" height="40" width="40"
+                                            class="logo" />
+                                    </h6><br>
+                                    <h6 for="Fila"><input type="checkbox" id="Fila" value="Fila" class="chkb"
+                                            onclick="chkcontrol()" name="ckb">
+                                        <img for="UnderArmour" src="Fila.png" height="40" width="40" class="logo" />
+                                    </h6><br>
+                                    <h6 for="converse"><input type="checkbox" id="converse" value="Converse"
+                                            class="chkb" onclick="chkcontrol()" name="ckb">
+                                        <img for="converse" src="converse.png" height="30" width="30" class="logo" />
+                                    </h6><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <br>
+    <div class="container-fluid">
+        <div class="container">
+            <h4 class="text-center">Why do Leading Global Brands Choose CleverTap?</h4>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card text-center border border-0">
+                        <div class="card-body shadow">
+                            <h5 class="card-title">All-In-One Platform</h5>
+                            <p class="card-text">You get advanced analytics, segmentation, customer journeys, and
+                                omnichannel engagement in one platform.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center border border-0">
+                        <div class="card-body shadow">
+                            <h5 class="card-title">Limitless Data Storage</h5>
+                            <p class="card-text">We invented the industry’s only purpose-built database to empower you
+                                with
+                                a 10 year data look back & 10,000 data points per user.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center border border-0">
+                        <div class="card-body shadow">
+                            <h5 class="card-title">Personalization</h5>
+                            <p class="card-text">Create memorable experiences that build brand love, loyalty, and
+                                advocacy.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card text-center border border-0">
+                        <div class="card-body shadow">
+                            <h5 class="card-title">Transparent Pricing</h5>
+                            <p class="card-text">Customizable pricing options built for your business, including
+                                unlimited Monthly Active Users (MAUs) or data-based plans.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center border border-0">
+                        <div class="card-body shadow">
+                            <h5 class="card-title">Industry-Specific Solutions</h5>
+                            <p class="card-text">A platform tailored for your business model to help you maximize
+                                customer lifetime value and revenue.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center border border-0">
+                        <div class="card-body shadow">
+                            <h5 class="card-title">Customer Success</h5>
+                            <p class="card-text">Our global dedicated teams are here to support and guide you throughout
+                                your journey, ensuring you achieve your desired outcomes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br>
+
+
+    <script>
+        window.onload=enableNotification();
+        var checkboxes = document.querySelectorAll('.chkb');
+        var selectedValues = [];
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                var checkedCount = 0;
+                selectedValues = [];
+                checkboxes.forEach(function (checkbox) {
+                    if (checkbox.checked) {
+                        checkedCount++;
+                        selectedValues.push(checkbox.value);
+                    }
+                });
+                if (checkedCount > 1) {
+                    this.checked = false;
+                    return;
+                }
+                console.log(selectedValues);
+                localStorage.setItem("Array", selectedValues)
+                console.log(selectedValues.length);
+            });
+        });
+
+        function login() {
+            var email = document.getElementById("Loginemail").value;
+            clevertap.onUserLogin.push({
+                Site: {
+                    "Email": email,
+                },
+            });
+            window.location.href = "home.html";
+        }
+
+        function register() {
+            var uname = document.getElementById("uname").value;
+            var contact = document.getElementById("contact").value;
+            var email = document.getElementById("email").value;
+            var CT_id = document.getElementById("ct_id").value;
+            var gender = document.getElementById("gender").value;
+            var dob = document.getElementById("dob").value;
+            var locationSelect = document.getElementById("locationSelect");
+            var selectedLocation = locationSelect.options[locationSelect.selectedIndex].value;
+            // var interests = [];
+            // var count = 0;
+            // // var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            // // checkboxes.forEach(function (checkbox) {
+            // //     interests.push(checkbox.value);
+            // //     count++;
+            // // });
+            clevertap.onUserLogin.push({
+                "Site": {
+                    "Name": uname,
+                    "Email": email,
+                    "Identity": CT_id,
+                    "Phone": contact,
+                    "Gender": gender,
+                    "DOB": new Date(dob),
+                    "Location": selectedLocation,
+                    "Interests": selectedValues,
+                    "MSG-email": true,
+                    "MSG-push": true,
+                    "MSG-sms": true,
+                    "MSG-whatsapp": true,
+                },
+            });
+            localStorage.setItem("count", selectedValues.length);
+            localStorage.setItem("city", selectedLocation)
+            window.location.href = "home.html";
+        }
+
+        function enableNotification() {
+        clevertap.notifications.push({
+            "titleText": "Would you like to receive Notification?",
+            "bodyText": "Will send you only trusted notifications and updates",
+            "okButtonText": "OK",
+            "rejectButtonText": "Cancel",
+            "okButtonColor": "#F28046",
+        });
+    }
+    </script>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+    integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+    crossorigin="anonymous"></script>
+
+</html>
