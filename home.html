@@ -486,18 +486,6 @@
     var cnt = localStorage.getItem("count");
     console.log(cnt);
 
-    function handleTabClosing(event) {
-        console.log("Tab is closing...");
-        clevertap.event.push("Web Exit");
-        event.returnValue = "Are you sure you want to leave this page?";
-    }
-
-    window.addEventListener('beforeunload', handleTabClosing);
-    const closeButton = document.querySelector('.close-button');
-    closeButton.addEventListener('click', () => {
-        window.removeEventListener('beforeunload', handleTabClosing);
-        window.close();
-    });
 
 
     var map;
