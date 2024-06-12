@@ -158,19 +158,19 @@
                 style="margin-right: 5px;">Pop-Up</button>
             <button class="btn btn-success rounded-pill" onclick="enablePush()">Push</button> -->
         </div>
-    </nav>
+    </nav>c
     <br>
     
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4"><h5 class="text-left">Nike Shoes(10)</h5></div>
+            <div class="col-md-4"><h5 class="text-left">Nike Shoes(12)</h5></div>
             <div class="col-md-4"><h4 class="rakkas-regular text-center" style="font-size: 30px;">Shop here</h4></div>
             <div class="col-md-4"><h6 class="text-right">Filter<span><img src="filter.png" height="13"></span> &nbsp;&nbsp;&nbsp;Sort by<span><img src="arrow.png" height="22"></span></h6></div>
         </div>
         <div class="card-group">
             <div class="card">
-                <img src="sh1.png" class="card-img-top" alt="...">
+                <img src="sh1.png" class="card-img-top" alt="..." onclick="buyItem(this)">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-8"><h5 class="card-title">Nike Air Force 1'07</h5></div>
@@ -504,6 +504,22 @@
     function addToWishlist() {
         clevertap.event.push("web_added_to_wishlist");
     }
+
+    function buyItem(image) {
+    const card = image.closest('.card');
+    const title = card.querySelector('.card-title').textContent.trim();
+    const price = card.querySelector('.card-text').textContent.trim();
+    const imgSrc = card.querySelector('img').src;
+    
+    const product = {
+        title: title,
+        price: price,
+        imgSrc: imgSrc
+    };
+    
+    localStorage.setItem('cartItem', JSON.stringify(product));
+    window.location.href = "shoes.html";
+}
    
 </script>
 
