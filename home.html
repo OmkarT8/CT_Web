@@ -144,13 +144,17 @@
                     <a class="rakkas-regular nav-link" href="#" style="font-size: large;">Home<span
                             class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="rakkas-regular nav-link" style="font-size: large;" href="">Contact<span
+                <li class="nav-item">
+                    <a class="rakkas-regular nav-link" style="font-size: large;" href="https://clevertap.com/live-product-demo/">Contact<span
                             class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="rakkas-regular nav-link" style="font-size: large;"
                         href="https://clevertap.com/live-product-demo/">Help<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="rakkas-regular nav-link" style="font-size: large;"
+                        href="product.html">Shop<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <!-- <button class="btn btn-success rounded-pill" onclick="enableNotification()"
@@ -327,7 +331,16 @@
     <div class="container" id="map">
 
     </div>
-    <br>
+    <br><br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+               <p>-----   <span><button class="btn btn-info rounded-pill" type="submit" onclick="shop()">Shop here now!!</button></span>   -----</p>
+            </div>  
+        </div>
+    </div>
+    <br><br>
 
     <div class="container-fluid">
         <h4 class="rakkas-regular text-center" style="font-size: 30px;">New Arrivals</h4>
@@ -550,7 +563,9 @@
     }
     window.onload = GetMap;
 
-
+    function shop(){
+        location.href="product.html"
+    }
 
     function enablePop() {
         clevertap.event.push("O PopUp");
