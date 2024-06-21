@@ -102,7 +102,7 @@
             font-style: normal;
         }
 
-        .racing-sans{
+        .racing-sans {
             font-family: "Racing Sans One", sans-serif;
             font-weight: 400;
             font-style: normal;
@@ -112,7 +112,7 @@
             font-size: small;
         }
 
-        .btn-info{
+        .btn-info {
             background-color: black;
             border: none;
         }
@@ -124,6 +124,7 @@
             height: 100%;
         }
     </style>
+
 </head>
 
 <body>
@@ -145,7 +146,8 @@
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="rakkas-regular nav-link" style="font-size: large;" href="https://clevertap.com/live-product-demo/">Contact<span
+                    <a class="rakkas-regular nav-link" style="font-size: large;"
+                        href="https://clevertap.com/live-product-demo/">Contact<span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -153,8 +155,8 @@
                         href="https://clevertap.com/live-product-demo/">Help<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="rakkas-regular nav-link" style="font-size: large;"
-                        href="product.html">Shop<span class="sr-only">(current)</span></a>
+                    <a class="rakkas-regular nav-link" style="font-size: large;" href="product.html">Shop<span
+                            class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <!-- <button class="btn btn-success rounded-pill" onclick="enableNotification()"
@@ -223,7 +225,8 @@
                             <div class="card text-white">
                                 <img src="shoes7.jpg" class="card-img" alt="..." id="carouselNative4">
                                 <div class="carousel-caption d-none d-md-block font-weight-bold">
-                                    <h5 class="racing-sans" style="font-size: xx-large;">Converse Chuck Taylor All Star</h5>
+                                    <h5 class="racing-sans" style="font-size: xx-large;">Converse Chuck Taylor All Star
+                                    </h5>
                                     <button class="btn btn-info rounded-pill" type="submit">Shop Now</button>
                                 </div>
                             </div>
@@ -336,8 +339,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-               <p>-----   <span><button class="btn btn-info rounded-pill" type="submit" onclick="shop()">Shop here now!!</button></span>   -----</p>
-            </div>  
+                <p>----- <span><button class="btn btn-info rounded-pill" type="submit" onclick="shop()">Shop here
+                            now!!</button></span> -----</p>
+            </div>
         </div>
     </div>
     <br><br>
@@ -481,8 +485,34 @@
         <br>
         <p class=" small text-center">Copyright&copy; OmkarT-2024</p><br>
     </div>
+    <script type="text/javascript">
+        // setTimeout(function () {
+        //     clevertap.event.push("enableWebPop");
+        // }, 6000);
+
+        if (!sessionStorage.getItem('eventTriggered')) {
+            setTimeout(function () {
+                clevertap.event.push("enableWebPop");
+                sessionStorage.setItem('eventTriggered', 'true');
+            }, 6000);
+        }
+
+        // setTimeout(function () {
+        //     console.log("Relaoding the map");
+        //     var container = document.getElementById('map');
+        //     container.innerHTML = container.innerHTML;
+        // }, 12000);
+
+        setTimeout(function () {
+            var container = document.getElementById('map');
+            container.style.display = 'none'; // Hide the element
+            container.offsetHeight; // Trigger reflow
+            container.style.display = 'block'; // Show the element again
+            console.log("Relaoding the map");
+        }, 7000);
+    </script>
 </body>
-<script>
+<script type="text/javascript">
 
     // function enableNotification() {
     //     clevertap.notifications.push({
@@ -499,10 +529,8 @@
     var cnt = localStorage.getItem("count");
     console.log(cnt);
 
-
-
     var map;
-    document.addEventListener("CT_web_native_display", function(event) {
+    document.addEventListener("CT_web_native_display", function (event) {
         const data = event.detail;
         const topic = data.kv.topic;
         switch (topic) {
@@ -542,29 +570,29 @@
         }
     });
 
-    function GetMap(Maplat, Maplong, nikelat1, nikelong1, nikelat2, nikelong2){
+    function GetMap(Maplat, Maplong, nikelat1, nikelong1, nikelat2, nikelong2) {
         map = new Microsoft.Maps.Map('#map', {
-                credentials: 'AgqhHTpqAb3THNjlAg9U5wgXs4_J3ohcC4zr52IMSRdL_zZ9G5WLaNo9N1_IKXmv',
-                center: new Microsoft.Maps.Location(Maplat, Maplong), // Chennai coordinates
-                zoom: 10
+            credentials: 'AgqhHTpqAb3THNjlAg9U5wgXs4_J3ohcC4zr52IMSRdL_zZ9G5WLaNo9N1_IKXmv',
+            center: new Microsoft.Maps.Location(Maplat, Maplong), // Chennai coordinates
+            zoom: 10
+        });
+        var nikeStores = [
+            { name: 'Nike Store 1', location: new Microsoft.Maps.Location(nikelat1, nikelong1) }, // Example coordinates
+            { name: 'Nike Store 2', location: new Microsoft.Maps.Location(nikelat2, nikelong2) }, // Example coordinates
+            // Add more Nike store locations here
+        ];
+        for (var i = 0; i < nikeStores.length; i++) {
+            var pin = new Microsoft.Maps.Pushpin(nikeStores[i].location, {
+                title: nikeStores[i].name,
+                color: 'red'
             });
-            var nikeStores = [
-                { name: 'Nike Store 1', location: new Microsoft.Maps.Location(nikelat1, nikelong1) }, // Example coordinates
-                { name: 'Nike Store 2', location: new Microsoft.Maps.Location(nikelat2, nikelong2) }, // Example coordinates
-                // Add more Nike store locations here
-            ];
-            for (var i = 0; i < nikeStores.length; i++) {
-                var pin = new Microsoft.Maps.Pushpin(nikeStores[i].location, {
-                    title: nikeStores[i].name,
-                    color: 'red'
-                });
-                map.entities.push(pin);
-            }
+            map.entities.push(pin);
+        }
     }
     window.onload = GetMap;
 
-    function shop(){
-        location.href="product.html"
+    function shop() {
+        location.href = "product.html"
     }
 
     function enablePop() {
