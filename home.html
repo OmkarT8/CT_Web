@@ -494,6 +494,23 @@
             setTimeout(function () {
                 clevertap.event.push("enableWebPop");
                 sessionStorage.setItem('eventTriggered', 'true');
+                console.log("Web Pop Up Triggered");
+            }, 6000);
+        }
+
+        if (!sessionStorage.getItem('eventTriggered1')) {
+            setTimeout(function () {
+                clevertap.event.push("enableNativeDisplay");
+                sessionStorage.setItem('eventTriggered1', 'true');
+                console.log("Native Display Triggered");
+            }, 6000);
+        }
+
+        if (!sessionStorage.getItem('eventTriggered2')) {
+            setTimeout(function () {
+                clevertap.event.push("enableWebPush");
+                sessionStorage.setItem('eventTriggered2', 'true');
+                console.log("Web Push Triggered");
             }, 6000);
         }
 
